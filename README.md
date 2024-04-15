@@ -103,8 +103,6 @@ For example
 SELECT * FROM teachersinfo WHERE subject = 'CS';
 ```
 
----
-
 - Join two condition
 
 Using AND
