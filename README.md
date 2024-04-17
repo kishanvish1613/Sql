@@ -1,4 +1,4 @@
-### SQL Basic Query
+### SQL Basic QueryQuery
 
 - To show all databases available on your system
 
@@ -161,7 +161,7 @@ SELECT * FROM teachersinfo WHERE Name LIKE '_am%';
 
 ### Sort Data
 
-- In ascending order 
+- In ascending order
 
 ```
 SELECT * FROM <table name> ORDER BY <field name>;
@@ -174,6 +174,7 @@ SELECT * FROM <table name> ORDER BY field name> DESC;
 ```
 
 For example
+
 ```
 SELECT * FROM teachersinfo ORDER BY NAME;
 
@@ -185,3 +186,120 @@ SELECT * FROM teachersinfo ORDER BY NAME DESC;
 ```
 SELECT * FROM teachersinfo ORDER BY NAME DESC LIMIT 3;
 ```
+
+### DELETE
+
+- Delete First Record with `a` in <field name>
+
+```
+DELETE FROM <table name> WHERE <field name> LIKE "%a%" ORDER BY <field name> LIMIT 1;
+```
+
+- Delete all the data from table / Emptying Table: Simple Deletion
+
+```
+DELETE FROM <table name>;
+```
+
+### UPDATE
+
+- Update table with new value based on condition.
+
+```
+UPDATE <table name> SET <key> = <value> WHERE <key> = <value>;
+```
+
+For example
+
+```
+UPDATE students SET Name = "ABC" WHERE Name = "AB";
+```
+
+#### ALTER
+
+- Update table column and their properties.
+
+```
+ALTER TABLE <table name> CHANGE <old value> <new value> [add constraints];
+```
+
+For example
+
+```
+ALTER TABLE randomdata CHANGE Name FullName VARCHAR(30);
+```
+
+- Add new column in table
+
+```
+ALTER TABLE <table name> ADD <column name> <datatype> [constraints];
+```
+
+For example
+
+```
+ALTER TABLE randomdata ADD Salary DECIMAL(10,2) DEFAULT 0.00;
+```
+
+- Add a new column at a specific position.
+
+```
+ALTER TABLE <table name> ADD <column name> <datatype> AFTER <name of column>;
+```
+
+For example
+
+```
+ALTER TABLE randomdata ADD Role VARCHAR(20) AFTER FullName;
+```
+
+- Delete/Drop a column
+
+```
+ALTER TABLE <table name> DROP <column name>;
+```
+
+- Retrieve data info as Alias
+
+```
+SELECT <column name> AS "<alias name>" FROM <table name>;
+```
+
+- Retrieve two column info using CONCAT
+
+```
+SELECT CONCAT(<column name>, ' ', <column name>) AS "<alias name>" FROM <table name>;
+```
+
+- Count Records Meeting Condition
+
+```
+SELECT COUNT(*) AS "<alias name>" FROM <table name> WHERE <condition>;
+```
+
+#### Sum
+
+- Summing values from a table
+
+```
+SELECT SUM(<column name>) FROM <table name>;
+```
+
+```
+SELECT SUM(<column name>) FROM <table name> WHERE <condition>;
+```
+
+```
+SELECT SUM(<column name>) AS "<alias name>" FROM <table name> WHERE <condition>;
+```
+
+#### Average
+
+- Calculate Average Value from Table
+
+```
+SELECT AVG(<column name>) FROM <table name>;
+```
+
+You can do all the things you can do with Sum
+
