@@ -277,6 +277,8 @@ SELECT CONCAT(<column name>, ' ', <column name>) AS "<alias name>" FROM <table n
 SELECT COUNT(*) AS "<alias name>" FROM <table name> WHERE <condition>;
 ```
 
+### Aggregate Functions
+
 #### Sum
 
 - Summing values from a table
@@ -293,7 +295,7 @@ SELECT SUM(<column name>) FROM <table name> WHERE <condition>;
 SELECT SUM(<column name>) AS "<alias name>" FROM <table name> WHERE <condition>;
 ```
 
-#### Average
+#### Average/Min/Max
 
 - Calculate Average Value from Table
 
@@ -303,3 +305,109 @@ SELECT AVG(<column name>) FROM <table name>;
 
 You can do all the things you can do with Sum
 
+### GROUP BY
+
+Organizing Data for Analysis
+
+- Count Records by Column Values
+
+```
+SELECT <column name>, COUNT(*) AS "<alias name>" FROM <table name> GROUP BY <column name>;
+```
+
+```
+SELECT <column name>, AVG(<column name>) AS "<alias name>" FROM <table name> GROUP BY <column name>;
+```
+
+```
+SELECT <column name>, MAX(<column name>) AS "<alias name>" FROM weather GROUP BY <column name>;
+```
+
+### JOIN
+
+JOIN is a clause used to combine rows from two or more tables based on a related column between them. It allows you to retrieve data from multiple tables in a single query by specifying how the tables are related.
+
+- INNER join
+
+```
+SELECT * FROM <table name> AS <alias> INNER JOIN <table name> AS <alias> ON <alias>.<column name> = <alias>.<column name>;
+```
+
+- LEFT join
+
+```
+SELECT * FROM <table name> AS <alias> LEFT JOIN <table name> AS <alias> ON <alias>.<column name> = <alias>.<column name>;
+```
+
+- RIGHT join
+
+```
+SELECT * FROM <table name> AS <alias> RIGHT JOIN <table name> AS <alias> ON <alias>.<column name> = <alias>.<column name>;
+```
+
+For example
+
+```
+SELECT * FROM airports AS a INNER JOIN cities AS c ON a.cityId = c.id;
+```
+
+- FULL OUTER join
+
+MySQL does not support FULL OUTER JOIN directly. However, you can simulate a full outer join using a combination of LEFT JOIN, RIGHT JOIN, and UNION
+
+```
+SELECT * FROM <table name> AS <alias> LEFT JOIN <table name> AS <alias> ON <alias>.<column name> = <alias>.<column name> UNION SELECT * FROM <table name> AS <alias> RIGHT JOIN <table name> AS <alias> ON <alias>.<column name> = <alias>.<column name>;
+```
+
+For example
+
+```
+SELECT * FROM airports AS a LEFT JOIN cities AS c ON a.cityId = c.id UNION SELECT * FROM airports AS a RIGHT JOIN cities AS c ON a.cityId = c.id;
+```
+
+- NATURAL JOIN
+
+```
+SELECT * FROM table1 NATURAL JOIN table2;
+```
+
+### Database Schema
+
+Database schema is blueprint of the actual db
+
+### Functional Dependency
+
+    column -> attribute
+    row -> tuples
+
+functional dependency define relationship between 2 attributes
+
+For example
+
+    X -> Y
+
+    Y is functionally dependent on X
+    means that, for every valid value of X we can uniquely identify Y.
+
+For example
+
+employee data
+
+```
++--------------+--------------+-----------+
+| Id           | Name         | Salary    |
++--------------+--------------+-----------+
+| 1            | ABC          |      8000 |
+| 2            | DEF          | 120000.00 |
++--------------+--------------+-----------+
+```
+
+e.Id -> e.Name ✔️ (e.Name is functionally dependent on e.Id)
+
+e.Id -> e.Salary ✔️ (e.Salary is functionally dependent on e.Id)
+
+But
+
+e.name -> e.Salary ❌
+
+Because two employees can have the same name
