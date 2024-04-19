@@ -1,4 +1,4 @@
-### SQL Basic QueryQuery
+### SQL Basic Query
 
 - To show all databases available on your system
 
@@ -411,3 +411,113 @@ But
 e.name -> e.Salary ❌
 
 Because two employees can have the same name
+
+### DB keys
+
+Keys are set of attributes that help us to uniquely identify a records in different situation
+
+keys 
+```
+    Super
+    Condidate
+    Composite
+    Primary
+    Alternate
+    Foreign
+    Unique
+```
+
+- Super key
+
+A super key is a set of one or more columns(attributes) that, taken collectively, uniquely identifies each row in a table
+
+For example
+
+```
+    +--------+--------------+-----------+
+    | e_Id   | e_Name       | e_phn     |
+    +--------+--------------+-----------+
+    | 1      | ABC          |      1234 |
+    | 2      | DEF          |    909090 |
+    +--------+--------------+-----------+
+
+uniquely identifies
+{
+    e_Id
+    (e_Id, e_Name)
+    (e_Name, e_phn)
+    .
+    .
+    ...
+}
+
+```
+
+- Condidate key
+
+Minimum set of attributes that can uniquely identify a records
+
+```
+    +--------+--------------+-----------+
+    | e_Id   | e_Name       | e_phn     |
+    +--------+--------------+-----------+
+    | 1      | ABC          |      1234 |
+    | 2      | DEF          |    909090 |
+    | 3      | ABC          |    876543 |
+    +--------+--------------+-----------+
+
+Minimum uniquely identify
+{
+    e_Id
+    e_phn
+}
+
+```
+
+- Composite key
+A composite key, also known as a compound key, is a key that consist of 2 or more than 2 attributes, that togather uniquely identify a record.
+The attributes that form composite key are not any key independently.
+
+```
+    +------------+------------+------------+
+    | StudentID  | CourseID   | Marks      |
+    +------------+------------+------------+
+    |    101     |    CSE101  |         90 |
+    |    101     |    MAT102  |         78 |
+    |    102     |    CSE101  |         45 |
+    |    103     |    PHY103  |         90 |
+    |    104     |    CSE101  |         45 |
+    |    104     |    MAT102  |         63 |
+    +------------+------------+------------+
+
+The combination of StudentID and CourseID together forms a composite key for this table
+
+```
+
+- Primary key
+There can be more than one condidate key, we can choose any one not-null condidate key to become primary key.
+
+The primary key in a database table is a special type of key that uniquely identifies each record (row) within that table.
+
+- Alternate key
+All condidate keys apart from primary key are Alternate keys.
+
+- Foreign key
+It is an attribute which is primary key in some other table
+
+```
+                  foreign key                    primary key
+                      ⬇️                            ⬇️
+    +------------+------------+------------+    +------------+---------------+-----------------+
+    | StudentID  | CourseID   | Marks      |    | CourseID   | Course_Name   | Course_Duration |
+    +------------+------------+------------+    +------------+---------------+-----------------+
+    |    101     |       101  |         90 |    |    101     |           CSE |              6M |
+    |    101     |       102  |         78 |    |    102     |           MAT |              6M |
+    |    102     |       101  |         45 |    |    103     |           PHY |              3M |
+    |    103     |       103  |         90 |    |    104     |           CP  |              9M |
+    |    104     |       101  |         45 |    |    105     |           ENG |            1.5M |
+    |    104     |       106  |         63 |    |    106     |            DB |              5M |
+    +------------+------------+------------+    +------------+---------------+-----------------+
+
+```
+
