@@ -424,7 +424,6 @@ keys
     Primary
     Alternate
     Foreign
-    Unique
 ```
 
 - Super key
