@@ -474,6 +474,7 @@ Minimum uniquely identify
 ```
 
 - Composite key
+
 A composite key, also known as a compound key, is a key that consist of 2 or more than 2 attributes, that togather uniquely identify a record.
 The attributes that form composite key are not any key independently.
 
@@ -494,14 +495,17 @@ The combination of StudentID and CourseID together forms a composite key for thi
 ```
 
 - Primary key
-There can be more than one condidate key, we can choose any one not-null condidate key to become primary key.
+
+here can be more than one condidate key, we can choose any one not-null condidate key to become primary key.
 
 The primary key in a database table is a special type of key that uniquely identifies each record (row) within that table.
 
 - Alternate key
+
 All condidate keys apart from primary key are Alternate keys.
 
 - Foreign key
+
 It is an attribute which is primary key in some other table
 
 ```
@@ -520,3 +524,42 @@ It is an attribute which is primary key in some other table
 
 ```
 
+### Normalization
+
+Normalization is the process of organizing data in a database efficiently. It involves breaking
+down a large table into smaller, more manageable
+tables and defining relationships between them.The goal of normalization is to eliminate
+redundancy and dependency issues while ensuring
+data integrity.
+
+There are several normal forms, each with its own set of rules, but the most commonly used are
+
+```
+    First Normal Form (1NF)
+    Second Normal Form (2NF)
+    Third Normal Form (3NF)
+
+```
+
+- First Normal Form
+
+```
+    - Any attribute must only contain atomic values (indivisible).
+
+    - Eliminates repeating groups by putting each piece of information in a separate column.
+```
+
+- Second Normal Form
+
+```
+    - Builds on 1NF and requires that all non-key attributes are fully functionally dependent on the entire primary key.
+
+    - Eliminates partial dependencies by removing columns that are only partially dependent on the primary key and placing them in separate tables.
+```
+
+- Third Normal Form
+
+```
+    - The table should be in 2nf
+    - It should not have transitive dependencies
+```
